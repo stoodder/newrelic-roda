@@ -10,6 +10,6 @@ RSpec.configure do |config|
   end
 end
 
-require 'grape'
+require 'roda'
 require 'newrelic_rpm'
-require 'newrelic-grape'
+require 'newrelic-roda'

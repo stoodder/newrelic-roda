@@ -1,15 +1,12 @@
-# NewRelic::Grape
+# NewRelic::Roda
 
-NewRelic instrumentation for the [Grape API DSL][0], inspired by [this blog post][1].
-
-If you use newrelic_rpm < 3.9.0, please use newrelic-grape 1.4.x
-If you use newrelic_rpm >= 3.9.0, please use newrelic-grape >= 2.0.0
+NewRelic instrumentation for the [Roda][0], forked from [newrelic-grape][1].
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'newrelic-grape'
+    gem 'newrelic-roda'
 
 And then execute:
 
@@ -17,9 +14,9 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install newrelic-grape
+    $ gem install newrelic-roda
 
-If you're using Rails, make sure that you've told rack to start the agent for Grape:
+If you're using Rails, make sure that you've told rack to start the agent for Roda:
 
     # config.ru
     require ::File.expand_path('../config/environment',  __FILE__)
@@ -32,24 +29,24 @@ If you're using Rails, make sure that you've told rack to start the agent for Gr
 
 ## Usage
 
-Ensure that you have working NewRelic instrumentation. Add the `newrelic-grape` gem. That's it.
+Ensure that you have working NewRelic instrumentation. Add the `newrelic-roda` gem. That's it.
 
 ## Disabling Instrumentation
 
-Set `disable_grape` in `newrelic.yml` or `ENV['DISABLE_NEW_RELIC_GRAPE']` to disable instrumentation.
+Set `disable_roda` in `newrelic.yml` or `ENV['DISABLE_NEW_RELIC_RODA']` to disable instrumentation.
 
 ## Testing
 
 This gem naturally works in NewRelic developer mode. For more information see the [NewRelic Developer Documentation][2].
 
-To ensure instrumentation in tests, check that `perform_action_with_newrelic_trace` is invoked on an instance of `NewRelic::Agent::Instrumentation::Grape` when calling your API.
+To ensure instrumentation in tests, check that `perform_action_with_newrelic_trace` is invoked on an instance of `NewRelic::Agent::Instrumentation::Roda` when calling your API.
 
 ### RSpec
 
 ``` ruby
-describe NewRelic::Agent::Instrumentation::Grape do
+describe NewRelic::Agent::Instrumentation::Roda do
   it "traces" do
-    NewRelic::Agent::Instrumentation::Grape
+    NewRelic::Agent::Instrumentation::Roda
       .any_instance
       .should_receive(:perform_action_with_newrelic_trace)
       .and_yield
@@ -58,10 +55,6 @@ describe NewRelic::Agent::Instrumentation::Grape do
   end
 end
 ```
-
-## Demos
-
-* [Grape on Rack w/ NewRelic Instrumentation Enabled][3]
 
 ## Contributing
 
@@ -72,7 +65,6 @@ end
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create new Pull Request
 
-[0]: https://github.com/intridea/grape
-[1]: http://artsy.github.com/blog/2012/11/29/measuring-performance-in-grape-apis-with-new-relic
+[0]: https://github.com/jeremyevans/roda
+[1]: https://github.com/flyerhzm/newrelic-grape
 [2]: https://newrelic.com/docs/ruby/developer-mode
-[3]: https://github.com/dblock/grape-on-rack

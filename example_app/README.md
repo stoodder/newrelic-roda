@@ -1,7 +1,7 @@
 Example App
 ================
 
-A [Grape](http://github.com/intridea/grape) API mounted on Rack to demonstrate [newrelic-grape](https://github.com/xinminlabs/newrelic-grape).
+A [Roda](http://github.com/jeremyevans/roda) API mounted on Rack to demonstrate [newrelic-roda](https://github.com/mikz/newrelic-roda).
 
 * [ping](api/ping.rb): a hello world example that returns a JSON document
 
