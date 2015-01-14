@@ -14,8 +14,6 @@ module NewRelic
           include ::NewRelic::Agent::MethodTracer
           add_method_tracer :match_all
 
-          private
-
           def if_match(args, &block)
             instrumented = proc do |*captures|
               params = { env.fetch('new_relic.roda').last => captures }
@@ -61,6 +59,7 @@ module NewRelic
             super
           rescue => error
             ::NewRelic::Agent.notice_error(error)
+
             raise error
           end
 
