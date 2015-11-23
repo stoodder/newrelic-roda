@@ -58,7 +58,7 @@ module NewRelic
             base.include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
           end
 
-          def call(env, &block)
+          def call(&block)
             super
           rescue => error
             ::NewRelic::Agent.notice_error(error)
@@ -90,9 +90,6 @@ DependencyDetection.defer do
     NewRelic::Agent.logger.debug 'Installing Roda instrumentation'
     Roda::RodaPlugins.register_plugin(:new_relic, NewRelic::Agent::Instrumentation::Roda)
     Roda.plugin(:new_relic)
-  end
-
-  executes do
   end
 
   executes do
