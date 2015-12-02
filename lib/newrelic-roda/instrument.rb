@@ -18,8 +18,7 @@ module NewRelic
             begin
               txn_name = _route_name
               unless txn_name.nil?
-                ::NewRelic::Agent::Transaction.set_default_transaction_name(
-                    "#{self.class.name}/#{txn_name}", :category => :sinatra)
+                ::NewRelic::Agent::Transaction.set_default_transaction_name("#{self.class.name.gsub('::RodaRequest', '')}#{txn_name}", nil)
               end
             rescue => e
               ::NewRelic::Agent.logger.debug("Failed during route_eval to set transaction name", e)
