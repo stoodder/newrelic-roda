@@ -48,7 +48,7 @@ module NewRelic
           end
 
           def _route_name
-            request.path
+            self.path_info
             #"#{request_method} #{env.fetch('new_relic.roda',['/']).join('/')}"
           end
         end
