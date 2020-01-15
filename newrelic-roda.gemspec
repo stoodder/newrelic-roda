@@ -30,7 +30,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency 'roda', '~> 2.8'
+  gem.add_runtime_dependency 'roda', '~> 3.2'
   gem.add_runtime_dependency 'newrelic_rpm', '~> 3.14', '>= 3.14.0.305'
 
   gem.add_development_dependency 'rake', '~> 10.0'
